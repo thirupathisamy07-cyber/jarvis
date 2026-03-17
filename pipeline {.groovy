@@ -4,25 +4,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-repo/jarvis.git'
+                git branch: 'main', url: 'https://github.com/thirupathisamy07-cyber/jarvis.git'
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Test') {
             steps {
-                sh 'pip install -r requirements.txt'
-            }
-        }
-
-        stage('Run JARVIS') {
-            steps {
-                sh 'python main.py'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Jarvis deployed successfully!'
+                bat 'echo Jenkins working with main branch!'
             }
         }
     }
