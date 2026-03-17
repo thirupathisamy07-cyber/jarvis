@@ -4,19 +4,13 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                echo 'Cloning successful!'
+                git branch: 'main', url: 'https://github.com/thirupathisamy07-cyber/jarvis.git'
             }
         }
 
-        stage('Build') {
+        stage('Run Jarvis') {
             steps {
-                echo 'Building Jarvis project...'
-            }
-        }
-
-        stage('Run') {
-            steps {
-                echo 'Jarvis is running!'
+                bat 'python jarvis.py'
             }
         }
     }
