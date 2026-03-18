@@ -2,15 +2,27 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone') {
+        stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/thirupathisamy07-cyber/jarvis.git'
+                git 'https://github.com/your-repo/sample-project.git'
             }
         }
 
-        stage('Run Jarvis') {
+        stage('Build') {
             steps {
-                bat 'python jarvis.py'
+                sh 'javac Main.java'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'java Main'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application...'
             }
         }
     }
